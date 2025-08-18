@@ -1,8 +1,5 @@
 package fds.klippel;
-    import java.time.LocalDate;
-
-
-
+import java.time.LocalDate;
 
 public class Codificador_Arthur implements Codificador {
     public String getNome() {

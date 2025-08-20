@@ -1,19 +1,28 @@
 package fds.klippel;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Codificador cod = new Codificador_Arthur();
+        Codificador cod1 = new Codificador_Arthur();
+        Codificador cod2 = new CodificadorSimples();
 
-        System.out.println("Codificador: "+cod.getNome());
-        System.out.println("Versao: "+cod.getDataCriacao());
-        System.out.println("Nivel de segurança: "+cod.getNivelSeguranca());
-        
-        String texto = "Este e o string a ser codificado";
-        String codificado = cod.codifica(texto);
-        String decodificado = cod.decodifica(codificado);
+        Factory.codificadores.add(cod1);
+        Factory.codificadores.add(cod2);
 
-        System.out.println("Texto original: "+texto);
-        System.out.println("Texto codificado: "+codificado);
-        System.out.println("Texto decodificado: "+decodificado);
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("Indique o nível desejado de segurança");
+        int valor = s.nextInt();
+        Codificador Ideal = Factory.compara(valor);
+        System.out.println("\nO codificador ideal é: "+ Ideal.getNome());
+
+        String texto = Ideal.codifica("frase para codificar");
+        System.out.println("\nfrase codificada: "+texto);
+
+        String texto1 = Ideal.decodifica("Ìäcug@àcäc@eqÈkÌkecä");
+        System.out.println("frase descodificada: "+texto1);
+
+        s.close();
+
     }
 }

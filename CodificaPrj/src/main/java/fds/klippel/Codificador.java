@@ -1,6 +1,4 @@
 package fds.klippel;
-
-
 import java.time.LocalDate;
 
 public interface Codificador {
